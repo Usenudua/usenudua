@@ -1,0 +1,32 @@
+{
+  "name": "Usendua - Cultural Calendar",
+  "short_name": "Usendua",
+  "description": "Experience time through traditional Ibibio, Annañ, Oro, Efik cultures",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1f1f1f",
+  "theme_color": "#c94035",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-light-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-dark-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "education", "utilities"],
+  "lang": "en-NG"
+}
