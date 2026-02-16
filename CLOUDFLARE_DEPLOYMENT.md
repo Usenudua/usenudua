@@ -1,4 +1,4 @@
-# Cloudflare Pages Deployment Guide
+# Cloudflare Pages Deployment Guide (OpenNext Migration)
 
 This guide explains how to host your **Usenudua** webpage on Cloudflare Pages.
 
@@ -17,7 +17,7 @@ During the setup, use the following settings:
 
 - **Framework preset**: `None` (Select "None" or "Other" to avoid automatic overrides)
 - **Build command**: `npm run pages:build`  <-- THIS MUST BE EXACT
-- **Build output directory**: `.vercel/output`
+- **Build output directory**: `.open-next/cloudflare`
 - **Root directory**: `/` (If your files are in the main repo folder)
 
 ### ⚠️ IMPORTANT: Check your GitHub Structure
