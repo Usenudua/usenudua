@@ -3,44 +3,14 @@
 import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
-const labelSets = {
-  ibibio: ["Obo", "Edemobo", "Fioñadan", "Aderetaha", "Etaha", "Edemetaha", "Fioñetok", "Adereobo"],
-  efik: [
-    "Ekpri Ibibio",
-    "Akwa Ikwo",
-    "Akwa Ofioñ",
-    "Akwa Ederi",
-    "Akwa Ibibio",
-    "Ekpri Ikwo",
-    "Ekpri Ofioñ",
-    "Ekpri Ederi",
-  ],
-  annang: ["Obo", "Uruabom", "Offioñ", "Adet", "Aditaha", "Atim", "Akenyoñ", "Urua-Ette"],
-  oro: ["Obriboñ", "Uwe", "Ududa", "Odiebo", "Nwikpi", "Ububo", "Uruesañ", "Odieto"],
-  ubium: ["Obo", "Uduam", "Fioñadan", "Aderetaha", "Ataetaha", "Udua Ukat", "Fioñetok", "Adereobo"],
-}
-
-const startDate = new Date(1960, 0, 1)
+import { getDayLabel, SupportLang } from "@/lib/calendar-core"
 
 export function InteractiveCalendar() {
   const [currentDate, setCurrentDate] = useState(new Date())
-  const [selectedLanguage, setSelectedLanguage] = useState<keyof typeof labelSets>("ibibio")
+  const [selectedLanguage, setSelectedLanguage] = useState<SupportLang>("ibibio")
   const [month, setMonth] = useState(currentDate.getMonth())
   const [year, setYear] = useState(currentDate.getFullYear())
 
-  const labels = labelSets[selectedLanguage]
-
-  function calculateDaysSinceStart(date: Date): number {
-    const diffTime = date.getTime() - startDate.getTime()
-    return Math.floor(diffTime / (1000 * 60 * 60 * 24))
-  }
-
-  function getDayLabel(year: number, month: number, day: number): string {
-    const date = new Date(year, month, day)
-    const daysSinceStart = calculateDaysSinceStart(date)
-    const cyclePosition = daysSinceStart % 8
-    return labels[cyclePosition]
-  }
 
   const monthNames = [
     "January",
@@ -125,7 +95,7 @@ export function InteractiveCalendar() {
 
               <select
                 value={selectedLanguage}
-                onChange={(e) => setSelectedLanguage(e.target.value as keyof typeof labelSets)}
+                onChange={(e) => setSelectedLanguage(e.target.value as SupportLang)}
                 className="rounded-md border border-border bg-background px-3 py-2 text-sm transition-colors hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
               >
                 <option value="ibibio">Ibibio</option>
@@ -157,8 +127,9 @@ export function InteractiveCalendar() {
                 {/* Calendar days */}
                 {Array.from({ length: daysInMonth }).map((_, index) => {
                   const day = index + 1
-                  const dayLabel = getDayLabel(year, month, day)
+                  const dayLabel = getDayLabel(new Date(year, month, day), selectedLanguage)
                   const isTodayDate = isToday(day)
+
 
                   return (
                     <div
