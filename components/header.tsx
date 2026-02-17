@@ -11,7 +11,7 @@ export function Header() {
 
   const handleDownload = () => {
     setIsDownloading(true)
-    window.open("https://usenudua.com.ng/usendua.apk", "_blank")
+    window.open("https://lrwtopksrvjgupbnuken.storage.supabase.co/storage/v1/s3/downloads/usenudua-v0.1.0.apk", "_blank")
     setTimeout(() => setIsDownloading(false), 2000)
   }
 

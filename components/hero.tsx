@@ -10,8 +10,8 @@ export function Hero() {
   const handleDownload = () => {
     setIsDownloading(true)
     const link = document.createElement("a")
-    link.href = "/usenudua.apk"
-    link.download = "usenudua.apk"
+    link.href = "https://lrwtopksrvjgupbnuken.storage.supabase.co/storage/v1/s3/downloads/usenudua-v0.1.0.apk"
+    link.download = "usenudua-v0.1.0.apk"
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -41,10 +41,10 @@ export function Hero() {
         </p>
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="w-full sm:w-auto bg-transparent" 
+          <Button
+            size="lg"
+            variant="outline"
+            className="w-full sm:w-auto bg-transparent"
             onClick={handleDownload}
             disabled={isDownloading}
           >
