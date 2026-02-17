@@ -30,3 +30,7 @@ next-env.d.ts
 *.apk
 app-release.apk
 usenudua.apk
+
+# open-next
+.open-next/
+.wrangler/
