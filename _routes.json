@@ -1,0 +1,19 @@
+{
+    "version": 1,
+    "include": [
+        "/*"
+    ],
+    "exclude": [
+        "/_next/static/*",
+        "/images/*",
+        "/icon.svg",
+        "/apple-icon.png",
+        "/favicon.ico",
+        "/manifest.json",
+        "/*.png",
+        "/*.jpg",
+        "/*.jpeg",
+        "/*.svg",
+        "/*.apk"
+    ]
+}
