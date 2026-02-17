@@ -9,7 +9,12 @@ export function Hero() {
 
   const handleDownload = () => {
     setIsDownloading(true)
-    window.open("https://usenudua.com.ng/usenudua.apk", "_blank")
+    const link = document.createElement("a")
+    link.href = "/usenudua.apk"
+    link.download = "usenudua.apk"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
     // Reset after a short delay
     setTimeout(() => setIsDownloading(false), 2000)
   }

@@ -31,9 +31,7 @@ export function Footer() {
         <div id="about" className="mt-12 text-center">
           <h3 className="mb-3 text-xl font-semibold">About</h3>
           <p className="mx-auto max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-            Usendua is a brainchild of Abas Eduok, birthed in 2024 after years of gestation. It represents a bridge
-            between traditional cultural wisdom and modern technology, preserving and promoting the rich heritage of
-            Ibibio, Annañ, Oro, Efik, and other peoples of the Cross River basin.
+            Usendua is an ancestral timekeeping framework, brought into contemporary use by Abasiama Eduok. It came into digital existence in 2024 after years of quiet gestation — a bridge between traditional cultural wisdom and modern technology, preserving and amplifying the rich heritage of the Ibibio, Annañ, Oro, Efik, and other peoples of southern Nigeria.
           </p>
         </div>
 
