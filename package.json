@@ -7,7 +7,7 @@
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start",
-    "pages:build": "OPEN_NEXT_DEBUG=true npx @opennextjs/cloudflare build --dangerouslyUseUnsupportedNextVersion",
+    "pages:build": "OPEN_NEXT_DEBUG=true npx @opennextjs/cloudflare build --dangerouslyUseUnsupportedNextVersion && cp .open-next/worker.js .open-next/assets/_worker.js && cp -r .open-next/cloudflare .open-next/middleware .open-next/server-functions .open-next/assets/",
     "pages:preview": "npx wrangler pages dev .open-next/cloudflare"
   },
   "dependencies": {
