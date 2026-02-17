@@ -7,7 +7,7 @@
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start",
-    "pages:build": "npx @opennextjs/cloudflare build --dangerouslyUseUnsupportedNextVersion",
+    "pages:build": "OPEN_NEXT_DEBUG=true npx @opennextjs/cloudflare build --dangerouslyUseUnsupportedNextVersion",
     "pages:preview": "npx wrangler pages dev .open-next/cloudflare"
   },
   "dependencies": {
@@ -62,7 +62,6 @@
     "zod": "3.25.76"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.16",
     "@opennextjs/cloudflare": "^1.3.0",
     "@tailwindcss/postcss": "^4.1.9",
     "@types/node": "^22",
