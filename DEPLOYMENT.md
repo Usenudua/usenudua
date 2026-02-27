@@ -1,4 +1,4 @@
-# Usendua Website - Build and Deploy Instructions
+# Usenudua Website - Build and Deploy Instructions
 
 ## Prerequisites
 - Node.js 18+ installed
@@ -102,7 +102,7 @@ If you get TypeScript errors:
 - Verify public read permissions on BigStorage
 
 ### APK Not Downloading
-- Ensure `usendua.apk` is in the public root folder of BigStorage
+- Ensure `usenudua.apk` is in the public root folder of BigStorage
 - Set file to public read access
 - Test direct link: https://bold-thunder-5915.s3.bigstorage.io/usenudua.apk
 

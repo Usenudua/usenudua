@@ -52,7 +52,7 @@ export function Features() {
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-balance text-4xl font-bold tracking-tight md:text-5xl">Everything You Need</h2>
           <p className="mx-auto max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
-            Usendua combines the wisdom of traditional culture with modern calendar functionality
+            Usenudua combines the wisdom of traditional culture with modern calendar functionality
           </p>
         </div>
 

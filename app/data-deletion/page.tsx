@@ -4,8 +4,8 @@ import type { Metadata } from "next"
 
 
 export const metadata: Metadata = {
-  title: "Data Deletion Instructions - Usendua",
-  description: "How to delete your Usendua account and data",
+  title: "Data Deletion Instructions - Usenudua",
+  description: "How to delete your Usenudua account and data",
 }
 
 export default function DataDeletion() {
@@ -19,7 +19,7 @@ export default function DataDeletion() {
         </p>
 
         <div className="prose prose-invert max-w-none space-y-6">
-          <h2 className="text-2xl font-semibold mt-8 mb-4">How to Delete Your Usendua Account & Data</h2>
+          <h2 className="text-2xl font-semibold mt-8 mb-4">How to Delete Your Usenudua Account & Data</h2>
 
           <p>
             You may request deletion of your account and all associated data at any time. You have two options:
@@ -27,7 +27,7 @@ export default function DataDeletion() {
 
           <h3 className="text-xl font-semibold mt-6 mb-3">Option 1: Delete From Inside the App</h3>
           <ol className="list-decimal pl-6 space-y-2">
-            <li>Open the Usendua app</li>
+            <li>Open the Usenudua app</li>
             <li>
               Go to <strong>Settings</strong>
             </li>
@@ -63,7 +63,7 @@ export default function DataDeletion() {
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Third-Party Login Users</h2>
           <p>
-            If you logged in via Facebook or Google, deleting your Usendua account only impacts our platform — not your
+            If you logged in via Facebook or Google, deleting your Usenudua account only impacts our platform — not your
             social accounts.
           </p>
 

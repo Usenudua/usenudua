@@ -4,8 +4,8 @@ import type { Metadata } from "next"
 
 
 export const metadata: Metadata = {
-  title: "Terms of Service - Usendua",
-  description: "Terms of Service for Usendua cultural calendar app",
+  title: "Terms of Service - Usenudua",
+  description: "Terms of Service for Usenudua cultural calendar app",
 }
 
 export default function TermsOfService() {
@@ -20,7 +20,7 @@ export default function TermsOfService() {
 
         <div className="prose prose-invert max-w-none space-y-6">
           <p>
-            By using Usendua, you agree to these Terms of Service ("Terms"). If you do not agree, please discontinue
+            By using Usenudua, you agree to these Terms of Service ("Terms"). If you do not agree, please discontinue
             the use of the Service.
           </p>
 
@@ -55,7 +55,7 @@ export default function TermsOfService() {
           <p>
             The cultural calendar system, traditional day names, and associated cultural information are based on
             traditional knowledge systems of Ibibio, Annañ, Oro, Efik, and related cultures. The app design, code, and
-            implementation are owned by Usendua.
+            implementation are owned by Usenudua.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">6. Prohibited Activities</h2>

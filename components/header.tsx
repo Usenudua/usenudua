@@ -11,7 +11,7 @@ export function Header() {
 
   const handleDownload = () => {
     setIsDownloading(true)
-    window.open("https://lrwtopksrvjgupbnuken.storage.supabase.co/storage/v1/s3/downloads/usenudua-v0.1.0.apk", "_blank")
+    window.open("https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.2.apk", "_blank")
     setTimeout(() => setIsDownloading(false), 2000)
   }
 
@@ -27,7 +27,7 @@ export function Header() {
           <div className="flex items-center">
             <Image
               src="/images/logo.png"
-              alt="Usendua Logo"
+              alt="Usenudua Logo"
               width={32}
               height={32}
               className="h-8 w-8 object-contain"
@@ -35,7 +35,7 @@ export function Header() {
           </div>
 
           <div className="absolute left-1/2 -translate-x-1/2">
-            <span className="text-xl font-semibold">Usendua</span>
+            <span className="text-xl font-semibold">Usenudua</span>
           </div>
 
           <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">

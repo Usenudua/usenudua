@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated theme for Usendua brand - dark background with red accents */
+  /* Updated theme for Usenudua brand - dark background with red accents */
   --background: oklch(0.12 0 0);
   --foreground: oklch(0.98 0 0);
   --card: oklch(0.15 0 0);

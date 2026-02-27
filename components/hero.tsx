@@ -10,8 +10,8 @@ export function Hero() {
   const handleDownload = () => {
     setIsDownloading(true)
     const link = document.createElement("a")
-    link.href = "https://lrwtopksrvjgupbnuken.storage.supabase.co/storage/v1/s3/downloads/usenudua-v0.1.0.apk"
-    link.download = "usenudua-v0.1.0.apk"
+    link.href = "https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.2.apk"
+    link.download = "usenudua-v2.0.2.apk"
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -35,7 +35,7 @@ export function Hero() {
         </h1>
 
         <p className="mx-auto mb-12 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
-          Usendua brings cultural heritage to your daily planning. Discover the rich tradition of Ibibio, Annañ, Oro,
+          Usenudua brings cultural heritage to your daily planning. Discover the rich tradition of Ibibio, Annañ, Oro,
           Efik names, market days, deities, and ritual observances while staying organized with a modern, beautiful
           calendar.
         </p>

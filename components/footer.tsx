@@ -9,7 +9,7 @@ export function Footer() {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
               <CalendarDays className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="text-xl font-semibold">Usendua</span>
+            <span className="text-xl font-semibold">Usenudua</span>
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
@@ -31,7 +31,7 @@ export function Footer() {
         <div id="about" className="mt-12 text-center">
           <h3 className="mb-3 text-xl font-semibold">About</h3>
           <p className="mx-auto max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-            Usendua is an ancestral timekeeping framework, brought into contemporary use by Abasiama Eduok. It came into digital existence in 2024 after years of quiet gestation — a bridge between traditional cultural wisdom and modern technology, preserving and amplifying the rich heritage of the Ibibio, Annañ, Oro, Efik, and other peoples of southern Nigeria.
+            Usenudua is an ancestral timekeeping framework, brought into contemporary use by Abasiama Eduok. It came into digital existence in 2024 after years of quiet gestation — a bridge between traditional cultural wisdom and modern technology, preserving and amplifying the rich heritage of the Ibibio, Annañ, Oro, Efik, and other peoples of southern Nigeria.
           </p>
         </div>
 

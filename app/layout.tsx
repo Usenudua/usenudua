@@ -9,11 +9,11 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   metadataBase: new URL('https://usenudua.com.ng'),
   title: {
-    default: "Usendua - Cultural Calendar App | Ibibio, Annañ, Oro, Efik",
-    template: "%s | Usendua"
+    default: "Usenudua - Cultural Calendar App | Ibibio, Annañ, Oro, Efik",
+    template: "%s | Usenudua"
   },
   description:
-    "Experience time through the lens of Ibibio, Annañ, Oro, Efik, and other southern Nigeria cultures with Usendua, the calendar app that celebrates cultural heritage every day. Track traditional day names, market days, and commemorate life events.",
+    "Experience time through the lens of Ibibio, Annañ, Oro, Efik, and other southern Nigeria cultures with Usenudua, the calendar app that celebrates cultural heritage every day. Track traditional day names, market days, and commemorate life events.",
   keywords: [
     "Ibibio calendar",
     "Efik calendar",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Abasiama Eduok" }],
   creator: "Abasiama Eduok",
-  publisher: "Usendua",
+  publisher: "Usenudua",
   formatDetection: {
     email: false,
     address: false,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
         url: '/images/logo.png',
         width: 1200,
         height: 630,
-        alt: 'Usendua Cultural Calendar App',
+        alt: 'Usenudua Cultural Calendar App',
       },
     ],
   },
@@ -77,11 +77,11 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   generator: 'v0.app',
-  applicationName: 'Usendua',
+  applicationName: 'Usenudua',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Usendua',
+    title: 'Usenudua',
   },
   category: 'culture',
 }

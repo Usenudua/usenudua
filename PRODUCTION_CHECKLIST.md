@@ -56,7 +56,7 @@
    ```
 
 2. **Upload APK File**
-   - [ ] Copy `usendua.apk` to `D:\Usenudua webpage\public\`
+   - [ ] Copy `usenudua.apk` to `D:\Usenudua webpage\public\`
    - [ ] Verify file size is reasonable (not corrupted)
    - [ ] Test APK installs correctly on Android device
 
@@ -75,7 +75,7 @@
    - [ ] Clear existing files in bucket
    - [ ] Upload ALL files from `out` folder
    - [ ] Set public read permissions
-   - [ ] Upload `usendua.apk` to root
+   - [ ] Upload `usenudua.apk` to root
 
 5. **Configure Cloudflare Worker**
    - [ ] Verify worker is deployed and active
@@ -98,7 +98,7 @@
 - [ ] Privacy Policy: https://usenudua.com.ng/privacy-policy
 - [ ] Terms of Service: https://usenudua.com.ng/terms-of-service
 - [ ] Data Deletion: https://usenudua.com.ng/data-deletion
-- [ ] APK download: https://usenudua.com.ng/usendua.apk
+- [ ] APK download: https://usenudua.com.ng/usenudua.apk
 - [ ] 404 page for invalid URLs
 
 ### Content Testing

@@ -9,29 +9,29 @@ import {
 
 const faqs = [
   {
-    question: "What is Usendua?",
+    question: "What is Usenudua?",
     answer:
-      "Usendua is a cultural calendar app that brings traditional Ibibio, Annañ, Oro, Efik, and other Cross River basin cultures to modern life. It displays traditional day names, market days, deity celebrations, and allows you to commemorate important life events using the traditional calendar system.",
+      "Usenudua is a cultural calendar app that brings traditional Ibibio, Annañ, Oro, Efik, and other Cross River basin cultures to modern life. It displays traditional day names, market days, deity celebrations, and allows you to commemorate important life events using the traditional calendar system.",
   },
   {
-    question: "Which languages does Usendua support?",
+    question: "Which languages does Usenudua support?",
     answer:
-      "Usendua supports Ibibio, Efik, Annañ, Oro, and Ubium languages. You can seamlessly switch between these languages to view traditional day names and cultural information in your preferred language.",
+      "Usenudua supports Ibibio, Efik, Annañ, Oro, and Ubium languages. You can seamlessly switch between these languages to view traditional day names and cultural information in your preferred language.",
   },
   {
     question: "How does the traditional calendar work?",
     answer:
-      "The traditional calendar uses an 8-day cycle instead of the 7-day Western week. Each day has a unique name in the traditional languages, and certain days are associated with market activities, deity celebrations, and ritual observances. Usendua calculates these days based on the traditional system dating back to January 1, 1960.",
+      "The traditional calendar uses an 8-day cycle instead of the 7-day Western week. Each day has a unique name in the traditional languages, and certain days are associated with market activities, deity celebrations, and ritual observances. Usenudua calculates these days based on the traditional system dating back to January 1, 1960.",
   },
   {
-    question: "Is Usendua available on iOS?",
+    question: "Is Usenudua available on iOS?",
     answer:
-      "Currently, Usendua is available only for Android devices. An iOS version is in development and will be released soon. Stay tuned for updates!",
+      "Currently, Usenudua is available only for Android devices. An iOS version is in development and will be released soon. Stay tuned for updates!",
   },
   {
     question: "Can I track multiple children's birthdays?",
     answer:
-      "Yes! Usendua allows you to commemorate and track multiple life events (Usoro), including births of multiple children, anniversaries, and other important milestones using the traditional calendar system.",
+      "Yes! Usenudua allows you to commemorate and track multiple life events (Usoro), including births of multiple children, anniversaries, and other important milestones using the traditional calendar system.",
   },
   {
     question: "Is my data private and secure?",
@@ -44,7 +44,7 @@ const faqs = [
       "You can delete your account directly from the app by going to Settings > Delete Account. Alternatively, you can email us at boifiok@usenudua.com.ng with the subject 'Account/Data Deletion Request'. Visit our Data Deletion page for detailed instructions.",
   },
   {
-    question: "Does Usendua work offline?",
+    question: "Does Usenudua work offline?",
     answer:
       "Yes! Once you've downloaded the app and set up your account, the calendar and your commemorations are available offline. You'll need an internet connection for initial setup and to sync data across devices.",
   },
@@ -59,7 +59,7 @@ export function FAQ() {
             Frequently Asked Questions
           </h2>
           <p className="mx-auto max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
-            Everything you need to know about Usendua
+            Everything you need to know about Usenudua
           </p>
         </div>
 
