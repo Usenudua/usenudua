@@ -58,45 +58,45 @@ export function InteractiveCalendar() {
   }
 
   return (
-    <section id="calendar" className="py-24 bg-card">
+    <section id="calendar" className="py-24">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-8 text-center">
+          <div className="mb-8 text-center text-white">
             <h2 className="mb-4 text-3xl font-bold text-balance">Try the Calendar</h2>
-            <p className="text-muted-foreground text-pretty">
+            <p className="text-white/70 text-pretty">
               Explore the interactive calendar and see traditional day names
             </p>
           </div>
 
-          <div className="rounded-xl border border-border bg-background shadow-lg overflow-hidden">
+          <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur-xl shadow-2xl overflow-hidden">
             {/* Controls */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border bg-muted/20 p-4">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 border-b border-white/10 bg-white/5 p-6">
+              <div className="flex items-center justify-center gap-4 w-full sm:w-auto">
                 <button
                   onClick={prevMonth}
-                  className="flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background transition-colors hover:bg-muted"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-all hover:bg-white/10 hover:scale-110 active:scale-95 text-white"
                   aria-label="Previous month"
                 >
-                  <ChevronLeft className="h-4 w-4" />
+                  <ChevronLeft className="h-5 w-5" />
                 </button>
-                <div className="min-w-[160px] sm:min-w-[200px] text-center">
-                  <span className="text-base sm:text-lg font-semibold">
+                <div className="min-w-[180px] sm:min-w-[220px] text-center">
+                  <span className="text-lg sm:text-xl font-bold text-white tracking-tight">
                     {monthNames[month]} {year}
                   </span>
                 </div>
                 <button
                   onClick={nextMonth}
-                  className="flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background transition-colors hover:bg-muted"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-all hover:bg-white/10 hover:scale-110 active:scale-95 text-white"
                   aria-label="Next month"
                 >
-                  <ChevronRight className="h-4 w-4" />
+                  <ChevronRight className="h-5 w-5" />
                 </button>
               </div>
 
               <select
                 value={selectedLanguage}
                 onChange={(e) => setSelectedLanguage(e.target.value as SupportLang)}
-                className="rounded-md border border-border bg-background px-3 py-2 text-sm transition-colors hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
+                className="rounded-lg border border-white/20 bg-black/60 px-4 py-2 text-sm font-medium transition-all hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-primary text-white cursor-pointer"
               >
                 <option value="ibibio">Ibibio</option>
                 <option value="efik">Efik</option>
@@ -113,7 +113,7 @@ export function InteractiveCalendar() {
                 {dayHeaders.map((header) => (
                   <div
                     key={header}
-                    className="flex items-center justify-center py-1 sm:py-2 text-[9px] xs:text-[10px] sm:text-xs md:text-sm font-semibold text-muted-foreground"
+                    className="flex items-center justify-center py-2 sm:py-3 text-[10px] sm:text-xs md:text-sm font-bold text-white uppercase tracking-wider opacity-80"
                   >
                     {header}
                   </div>
@@ -135,18 +135,18 @@ export function InteractiveCalendar() {
                     <div
                       key={day}
                       className={`
-                        group relative aspect-square rounded border sm:rounded-lg border-border p-0.5 sm:p-2 transition-all hover:border-primary
-                        ${isTodayDate ? "border-primary bg-primary text-primary-foreground" : "bg-card"}
+                        group relative aspect-square rounded border sm:rounded-lg border-white/10 p-0.5 sm:p-2 transition-all hover:border-primary/50
+                        ${isTodayDate ? "border-primary bg-primary text-primary-foreground" : "bg-white/5 hover:bg-white/10"}
                       `}
                     >
                       <div className="flex h-full flex-col items-center justify-center text-center gap-0 sm:gap-1">
                         <span
-                          className={`text-[11px] xs:text-xs sm:text-base md:text-lg font-semibold leading-tight ${isTodayDate ? "" : "text-foreground"}`}
+                          className={`text-[12px] xs:text-sm sm:text-lg md:text-xl font-bold leading-tight ${isTodayDate ? "" : "text-white"}`}
                         >
                           {day}
                         </span>
                         <span
-                          className={`text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs leading-tight max-w-full truncate px-0.5 ${isTodayDate ? "opacity-90" : "text-muted-foreground"}`}
+                          className={`text-[8px] xs:text-[10px] sm:text-[11px] md:text-sm font-medium leading-tight max-w-full truncate px-1 ${isTodayDate ? "text-white/90" : "text-white/80 group-hover:text-white"}`}
                           title={dayLabel}
                         >
                           {dayLabel}

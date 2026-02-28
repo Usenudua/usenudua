@@ -60,7 +60,7 @@ export function Features() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/50"
+              className="group relative overflow-hidden rounded-xl border border-white/10 bg-black/20 backdrop-blur-md p-6 transition-all hover:border-primary/50 hover:bg-black/30"
             >
               <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <feature.icon className="h-6 w-6" />

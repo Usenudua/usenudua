@@ -52,7 +52,7 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-24 bg-card">
+    <section id="faq" className="py-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-balance text-4xl font-bold tracking-tight md:text-5xl">
