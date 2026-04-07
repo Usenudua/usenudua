@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator"
 
 export function Philosophy() {
   return (
-    <section className="py-24 px-4 bg-[#0a0a0a]">
+    <section className="py-24 px-4 bg-transparent backdrop-blur-[2px]">
       <div className="mx-auto max-w-3xl">
         {/* Intro */}
         <div className="mb-16 space-y-6 text-center">
