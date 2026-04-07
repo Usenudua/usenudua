@@ -96,7 +96,7 @@ export function Hero() {
             {isDownloading ? 'Opening Download...' : 'Download for Android'}
           </Button>
         </div>
-        <p className="mt-4 text-sm text-muted-foreground">Available for Android • iOS coming soon</p>
+        <p className="mt-4 text-sm text-white">iOS coming soon</p>
       </div>
 
       <div className="absolute bottom-8 animate-bounce">
