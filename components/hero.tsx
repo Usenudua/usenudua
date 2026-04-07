@@ -78,7 +78,7 @@ export function Hero() {
           <span className="block text-primary">Ibibio, Annañ, Oro, Efik & other Cultures</span>
         </h1>
 
-        <p className="mx-auto mb-12 max-w-2xl text-pretty text-base leading-relaxed text-white/80 sm:text-lg md:text-xl">
+        <p className="mx-auto mb-12 max-w-2xl text-pretty text-base leading-relaxed text-white sm:text-lg md:text-xl">
           Usenudua brings cultural heritage to your daily planning. Discover the rich tradition of Ibibio, Annañ, Oro,
           Efik names, market days, deities, and ritual observances while staying organized with a modern, beautiful
           calendar.

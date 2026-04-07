@@ -51,7 +51,7 @@ export function Features() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-balance text-4xl font-bold tracking-tight md:text-5xl">Everything You Need</h2>
-          <p className="mx-auto max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
+          <p className="mx-auto max-w-2xl text-pretty text-lg leading-relaxed text-white">
             Usenudua combines the wisdom of traditional culture with modern calendar functionality
           </p>
         </div>
@@ -66,7 +66,7 @@ export function Features() {
                 <feature.icon className="h-6 w-6" />
               </div>
               <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>
-              <p className="leading-relaxed text-muted-foreground">{feature.description}</p>
+              <p className="leading-relaxed text-white">{feature.description}</p>
             </div>
           ))}
         </div>

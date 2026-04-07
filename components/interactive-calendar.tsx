@@ -63,7 +63,7 @@ export function InteractiveCalendar() {
         <div className="mx-auto max-w-4xl">
           <div className="mb-8 text-center text-white">
             <h2 className="mb-4 text-3xl font-bold text-balance">Try the Calendar</h2>
-            <p className="text-white/70 text-pretty">
+            <p className="text-white text-pretty">
               Explore the interactive calendar and see traditional day names
             </p>
           </div>
@@ -113,7 +113,7 @@ export function InteractiveCalendar() {
                 {dayHeaders.map((header) => (
                   <div
                     key={header}
-                    className="flex items-center justify-center py-2 sm:py-3 text-[10px] sm:text-xs md:text-sm font-bold text-white uppercase tracking-wider opacity-80"
+                    className="flex items-center justify-center py-2 sm:py-3 text-[10px] sm:text-xs md:text-sm font-bold text-white uppercase tracking-wider"
                   >
                     {header}
                   </div>
@@ -146,7 +146,7 @@ export function InteractiveCalendar() {
                           {day}
                         </span>
                         <span
-                          className={`text-[8px] xs:text-[10px] sm:text-[11px] md:text-sm font-medium leading-tight max-w-full truncate px-1 ${isTodayDate ? "text-white/90" : "text-white/80 group-hover:text-white"}`}
+                          className={`text-[8px] xs:text-[10px] sm:text-[11px] md:text-sm font-medium leading-tight max-w-full truncate px-1 ${isTodayDate ? "text-white" : "text-white group-hover:text-white"}`}
                           title={dayLabel}
                         >
                           {dayLabel}

@@ -8,7 +8,7 @@ export function Philosophy() {
       <div className="mx-auto max-w-3xl">
         {/* Intro */}
         <div className="mb-16 space-y-6 text-center">
-          <p className="text-xl md:text-2xl font-light italic text-white/90 leading-relaxed">
+          <p className="text-xl md:text-2xl font-light italic text-white leading-relaxed">
             "The week did not arrive as belief. It arrived as structure."
           </p>
           <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
@@ -20,7 +20,7 @@ export function Philosophy() {
         <Separator className="my-12 bg-primary/10" />
 
         {/* Core Philosophy */}
-        <div className="space-y-12 text-white/80">
+        <div className="space-y-12 text-white">
           <div className="space-y-4">
             <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight">Usenudua begins at refusal.</h2>
             <p className="text-lg leading-relaxed">
@@ -34,7 +34,7 @@ export function Philosophy() {
           <div className="bg-white/5 p-8 rounded-2xl border border-white/10 space-y-6">
             <h3 className="text-xl font-medium text-primary">An 8-day cycle:</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div className="text-4xl md:text-5xl font-bold text-white/20">28 ÷ 8 = 3.5</div>
+              <div className="text-4xl md:text-5xl font-bold text-white">28 ÷ 8 = 3.5</div>
               <p className="border-l border-primary/30 pl-6 italic">
                 It does not fit. This is deliberate. The week & the month do not nest. 
                 The remainder is not hidden; it is kept.
@@ -93,7 +93,7 @@ export function Philosophy() {
 
           {/* Closing */}
           <div className="pt-8 text-center space-y-4">
-            <p className="text-lg font-medium text-white/90">
+            <p className="text-lg font-medium text-white">
               Sia, there is no sovereignty without power. <br />
               <span className="text-primary">Idoho mbakara ekikpeb nnyin ndioñọ idem.</span>
             </p>

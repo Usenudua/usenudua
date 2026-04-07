@@ -16,7 +16,7 @@
   --secondary: oklch(0.2 0 0);
   --secondary-foreground: oklch(0.98 0 0);
   --muted: rgba(255, 255, 255, 0.05);
-  --muted-foreground: oklch(0.65 0 0);
+  --muted-foreground: white;
   --accent: oklch(0.55 0.22 25);
   --accent-foreground: oklch(0.98 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -52,7 +52,7 @@
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  --muted-foreground: white;
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.396 0.141 25.723);
@@ -129,5 +129,10 @@
     background-attachment: fixed;
     background-repeat: no-repeat;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Specific shadow for red text (primary) to give it "solid black feathers" */
+  .text-primary {
+    text-shadow: 0 0 8px rgba(0, 0, 0, 1), 0 0 15px rgba(0, 0, 0, 1);
   }
 }
