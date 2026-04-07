@@ -54,15 +54,19 @@ export function Header() {
         {/* Bottom row: Navigation centered - Desktop only */}
         <div className="hidden md:flex items-center justify-center gap-6 pb-3">
           <nav className="flex items-center gap-6">
-            <a href="#features" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            <a href="#features" className="text-sm text-white transition-colors hover:text-foreground">
               Features
             </a>
-            <a href="#about" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            <a href="#about" className="text-sm text-white transition-colors hover:text-foreground">
               About
             </a>
-            <a href="#download" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-              Download
-            </a>
+            <button 
+              onClick={handleDownload}
+              className="text-sm text-white transition-colors hover:text-foreground cursor-pointer bg-transparent border-none p-0"
+              disabled={isDownloading}
+            >
+              {isDownloading ? 'Opening Download...' : 'Download'}
+            </button>
           </nav>
 
           <Button onClick={handleDownload} disabled={isDownloading}>
@@ -75,25 +79,28 @@ export function Header() {
             <nav className="flex flex-col gap-4">
               <a
                 href="#features"
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="text-sm text-white transition-colors hover:text-foreground"
                 onClick={handleNavClick}
               >
                 Features
               </a>
               <a
                 href="#about"
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="text-sm text-white transition-colors hover:text-foreground"
                 onClick={handleNavClick}
               >
                 About
               </a>
-              <a
-                href="#download"
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                onClick={handleNavClick}
+              <button
+                onClick={() => {
+                  handleDownload()
+                  handleNavClick()
+                }}
+                className="text-sm text-white text-left transition-colors hover:text-foreground cursor-pointer bg-transparent border-none p-0"
+                disabled={isDownloading}
               >
-                Download
-              </a>
+                {isDownloading ? 'Opening Download...' : 'Download'}
+              </button>
               <Button onClick={handleDownload} className="w-full" disabled={isDownloading}>
                 {isDownloading ? 'Opening...' : 'Get Started'}
               </Button>
