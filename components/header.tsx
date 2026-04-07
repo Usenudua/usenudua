@@ -12,9 +12,34 @@ export function Header() {
   const [primaryUrl, setPrimaryUrl] = useState("https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.2.apk")
 
   useEffect(() => {
-    getLatestRelease().then(release => {
-      if (release) setPrimaryUrl(release.supabase_url)
-    })
+    async function fetchLatestUrl() {
+      try {
+        // First try fetching latest.json from Supabase redirect layer
+        const response = await fetch("https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/latest.json", {
+          cache: 'no-store'
+        })
+        
+        if (response.ok) {
+          const data = await response.json()
+          if (data.url) {
+            setPrimaryUrl(data.url)
+            return
+          }
+        }
+      } catch (error) {
+        console.warn('Failed to fetch latest.json from Supabase (Header):', error)
+      }
+
+      // Fallback: fetch from database
+      try {
+        const release = await getLatestRelease()
+        if (release) setPrimaryUrl(release.supabase_url)
+      } catch (error) {
+        console.error('Failed to fetch fallback release from database (Header):', error)
+      }
+    }
+
+    fetchLatestUrl()
   }, [])
 
   const handleDownload = () => {
