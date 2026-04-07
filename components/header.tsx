@@ -3,15 +3,23 @@
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { getLatestRelease } from "@/app/actions/release"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isDownloading, setIsDownloading] = useState(false)
+  const [primaryUrl, setPrimaryUrl] = useState("https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.2.apk")
+
+  useEffect(() => {
+    getLatestRelease().then(release => {
+      if (release) setPrimaryUrl(release.supabase_url)
+    })
+  }, [])
 
   const handleDownload = () => {
     setIsDownloading(true)
-    window.open("https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.2.apk", "_blank")
+    window.open(primaryUrl, "_blank")
     setTimeout(() => setIsDownloading(false), 2000)
   }
 

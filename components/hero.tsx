@@ -2,16 +2,60 @@
 
 import { Button } from "@/components/ui/button"
 import { ChevronDown, Download } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { getLatestRelease } from "@/app/actions/release"
 
 export function Hero() {
   const [isDownloading, setIsDownloading] = useState(false)
+  const [downloadUrls, setDownloadUrls] = useState<{ primary: string; mirror?: string | null }>({
+    primary: "https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.3.apk"
+  })
+
+
+  useEffect(() => {
+    async function fetchLatestUrl() {
+      try {
+        // First try fetching latest.json from Supabase redirect layer
+        const response = await fetch("https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/latest.json", {
+          cache: 'no-store' // Ensure we get the latest version
+        })
+        
+        if (response.ok) {
+          const data = await response.json()
+          if (data.url) {
+            setDownloadUrls({
+              primary: data.url
+            })
+            return // Successfully updated from JSON
+          }
+        }
+      } catch (error) {
+        console.warn('Failed to fetch latest.json from Supabase:', error)
+      }
+
+      // Fallback: fetch from database if JSON fetch fails or returns no URL
+      try {
+        const release = await getLatestRelease()
+        if (release) {
+          setDownloadUrls({
+            primary: release.supabase_url,
+            mirror: release.neon_mirror_url
+          })
+        }
+      } catch (error) {
+        console.error('Failed to fetch fallback release from database:', error)
+      }
+    }
+
+    fetchLatestUrl()
+  }, [])
 
   const handleDownload = () => {
     setIsDownloading(true)
     const link = document.createElement("a")
-    link.href = "https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.2.apk"
-    link.download = "usenudua-v2.0.2.apk"
+    // Use primary (Supabase), fallback to mirror if needed, or vice-versa
+    link.href = downloadUrls.primary
+    link.download = `usenudua-${downloadUrls.primary.split('/').pop()}`
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)

@@ -1,0 +1,5 @@
+Contact: mailto:boifiok@usenudua.com.ng
+Expires: 2027-03-31T08:21:08Z
+Canonical: https://usenudua.com.ng/.well-known/security.txt
+Policy: https://usenudua.com.ng/privacy-policy
+Preferred-Languages: en, ibi, efi, ann, oro, ubi
