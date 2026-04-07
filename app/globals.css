@@ -124,7 +124,7 @@
   body {
     @apply bg-background text-foreground min-h-screen relative;
     background-image:
-      linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url('/images/usenudua.webp');
     background-size: cover;
     background-position: center;
