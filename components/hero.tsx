@@ -84,17 +84,34 @@ export function Hero() {
           calendar.
         </p>
 
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Button
-            size="lg"
-            variant="outline"
-            className="w-full sm:w-auto bg-transparent"
-            onClick={handleDownload}
-            disabled={isDownloading}
-          >
-            <Download className={`mr-2 h-5 w-5 ${isDownloading ? 'animate-bounce' : ''}`} />
-            {isDownloading ? 'Opening Download...' : 'Download for Android'}
-          </Button>
+        <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:items-start">
+          <div className="flex flex-col items-center w-full sm:w-auto">
+            <Button
+              size="lg"
+              variant="outline"
+              className="w-full sm:w-auto bg-transparent border-white/20 hover:bg-white/10"
+              onClick={handleDownload}
+              disabled={isDownloading}
+            >
+              <Download className={`mr-2 h-5 w-5 ${isDownloading ? 'animate-bounce' : ''}`} />
+              {isDownloading ? 'Opening Download...' : 'Download for Android'}
+            </Button>
+          </div>
+          <div className="flex flex-col items-center gap-2 w-full sm:w-auto">
+            <Button
+              size="lg"
+              variant="default"
+              className="w-full sm:w-auto"
+              asChild
+            >
+              <a href="https://selar.com/8z871v2e28" target="_blank" rel="noopener noreferrer">
+                Read the Calendar Corpus
+              </a>
+            </Button>
+            <span className="text-xs text-muted-foreground">
+              The full record behind the calendar
+            </span>
+          </div>
         </div>
         <p className="mt-4 text-sm text-white">iOS coming soon</p>
       </div>

@@ -13,6 +13,9 @@ export function Footer() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+            <a href="https://selar.com/8z871v2e28" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
+              Calendar Corpus
+            </a>
             <a href="/privacy-policy" className="transition-colors hover:text-foreground">
               Privacy Policy
             </a>
@@ -30,8 +33,19 @@ export function Footer() {
 
         <div id="about" className="mt-12 text-center">
           <h3 className="mb-3 text-xl font-semibold">About</h3>
-          <p className="mx-auto max-w-2xl text-pretty leading-relaxed text-muted-foreground">
+          <p className="mx-auto max-w-2xl text-pretty leading-relaxed text-muted-foreground mb-4">
             Usenudua is an ancestral timekeeping framework, brought into contemporary use by Abasiama Eduok. It came into digital existence in 2024 after years of quiet gestation — a bridge between traditional cultural wisdom and modern technology, preserving and amplifying the rich heritage of the Ibibio, Annañ, Oro, Efik, and other peoples of southern Nigeria.
+          </p>
+          <p className="mx-auto max-w-2xl text-pretty leading-relaxed text-muted-foreground text-sm">
+            Read the companion book and calendar corpus,{" "}
+            <a
+              href="https://selar.com/8z871v2e28"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline font-semibold"
+            >
+              The Last Fallback by Abas Eduok on Selar
+            </a>.
           </p>
         </div>
 

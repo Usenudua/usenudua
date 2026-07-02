@@ -85,6 +85,14 @@ export function Header() {
             <a href="#about" className="text-sm text-white transition-colors hover:text-foreground">
               About
             </a>
+            <a 
+              href="https://selar.com/8z871v2e28" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-sm text-white transition-colors hover:text-foreground"
+            >
+              Calendar Corpus
+            </a>
             <button 
               onClick={handleDownload}
               className="text-sm text-white transition-colors hover:text-foreground cursor-pointer bg-transparent border-none p-0"
@@ -115,6 +123,15 @@ export function Header() {
                 onClick={handleNavClick}
               >
                 About
+              </a>
+              <a
+                href="https://selar.com/8z871v2e28"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-white transition-colors hover:text-foreground"
+                onClick={handleNavClick}
+              >
+                Calendar Corpus
               </a>
               <button
                 onClick={() => {

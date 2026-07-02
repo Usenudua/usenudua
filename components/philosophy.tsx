@@ -100,6 +100,17 @@ export function Philosophy() {
             <p className="text-2xl md:text-3xl font-bold text-white tracking-widest uppercase">
               Yák isoñ adodukana.
             </p>
+            <p className="text-muted-foreground text-sm max-w-xl mx-auto pt-4">
+              For the complete cosmological and intellectual framework behind the calendar, read the companion book{" "}
+              <a
+                href="https://selar.com/8z871v2e28"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline font-semibold"
+              >
+                The Last Fallback by Abas Eduok
+              </a>.
+            </p>
           </div>
         </div>
       </div>
