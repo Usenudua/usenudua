@@ -42,7 +42,11 @@ export function Footer() {
               href="https://selar.com/8z871v2e28"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:underline font-semibold"
+              className="font-bold underline underline-offset-2 hover:opacity-90"
+              style={{
+                color: "#ffffff",
+                textShadow: "0 0 8px rgba(220,38,38,1), 0 0 20px rgba(220,38,38,0.8), 0 0 40px rgba(220,38,38,0.4)"
+              }}
             >
               The Last Fallback by Abasiama Eduok on Selar
             </a>.
