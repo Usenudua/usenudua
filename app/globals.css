@@ -121,6 +121,10 @@
     @apply border-border outline-ring/50;
   }
 
+  html {
+    background-color: #050505;
+  }
+
   body {
     @apply bg-background text-foreground min-h-screen relative;
     background-image: url('/images/usenudua.webp');
