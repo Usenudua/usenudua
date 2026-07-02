@@ -108,7 +108,7 @@ export function Philosophy() {
                 rel="noopener noreferrer"
                 className="text-primary hover:underline font-semibold"
               >
-                The Last Fallback by Abas Eduok
+                The Last Fallback by Abasiama Eduok
               </a>.
             </p>
           </div>

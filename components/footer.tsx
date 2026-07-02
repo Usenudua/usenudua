@@ -44,7 +44,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="text-primary hover:underline font-semibold"
             >
-              The Last Fallback by Abas Eduok on Selar
+              The Last Fallback by Abasiama Eduok on Selar
             </a>.
           </p>
         </div>
