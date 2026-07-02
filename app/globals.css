@@ -5,7 +5,7 @@
 
 :root {
   /* Updated theme for Usenudua brand - semi-transparent backgrounds for glass effect */
-  --background: rgba(10, 10, 10, 0.4);
+  --background: transparent;
   --foreground: oklch(0.98 0 0);
   --card: rgba(255, 255, 255, 0.03);
   --card-foreground: oklch(0.98 0 0);
@@ -122,20 +122,19 @@
   }
 
   html {
+    height: 100%;
+    width: 100%;
     background-color: #050505;
     background-image: url('/images/usenudua.webp');
     background-size: cover;
     background-position: center 35%;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    min-height: 100%;
-    width: 100%;
   }
 
   body {
     @apply text-foreground min-h-screen relative;
-    /* Transparent so the html background image shows through unobstructed */
-    background-color: transparent;
+    background-color: transparent !important;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.4);
   }
 
