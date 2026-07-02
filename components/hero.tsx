@@ -66,7 +66,7 @@ export function Hero() {
   return (
     <section
       id="download"
-      className="relative flex min-h-screen flex-col items-center justify-center px-4 pt-16 text-center"
+      className="relative flex min-h-screen flex-col items-center justify-center px-4 pt-32 text-center"
     >
       <div className="mx-auto max-w-4xl">
         <div className="mb-6 inline-block rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm text-primary">
@@ -85,7 +85,7 @@ export function Hero() {
         </p>
 
         <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:items-start">
-          <div className="flex flex-col items-center w-full sm:w-auto">
+          <div className="flex flex-col items-center gap-2 w-full sm:w-auto">
             <Button
               size="lg"
               variant="outline"
@@ -96,6 +96,8 @@ export function Hero() {
               <Download className={`mr-2 h-5 w-5 ${isDownloading ? 'animate-bounce' : ''}`} />
               {isDownloading ? 'Opening Download...' : 'Download for Android'}
             </Button>
+            {/* Invisible spacer to match height of microcopy below Corpus button */}
+            <span className="text-xs invisible select-none" aria-hidden="true">placeholder</span>
           </div>
           <div className="flex flex-col items-center gap-2 w-full sm:w-auto">
             <Button
