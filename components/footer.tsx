@@ -37,7 +37,7 @@ export function Footer() {
             Usenudua is an ancestral timekeeping framework, brought into contemporary use by Abasiama Eduok. It came into digital existence in 2024 after years of quiet gestation — a bridge between traditional cultural wisdom and modern technology, preserving and amplifying the rich heritage of the Ibibio, Annañ, Oro, Efik, and other peoples of southern Nigeria.
           </p>
           <p className="mx-auto max-w-2xl text-pretty leading-relaxed text-muted-foreground text-sm">
-            Read the companion book and calendar corpus,{" "}
+            Get the companion book and calendar corpus,{" "}
             <a
               href="https://selar.com/8z871v2e28"
               target="_blank"

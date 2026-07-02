@@ -107,7 +107,7 @@ export function Hero() {
               asChild
             >
               <a href="https://selar.com/8z871v2e28" target="_blank" rel="noopener noreferrer">
-                Read the Calendar Corpus
+                Get the Calendar Corpus
               </a>
             </Button>
             <span className="text-xs text-muted-foreground">
