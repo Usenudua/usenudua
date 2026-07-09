@@ -28,7 +28,6 @@ next-env.d.ts
 
 # binaries
 app-release.apk
-usenudua.apk
 
 # open-next
 .open-next/
@@ -39,3 +38,4 @@ tests/
 app-release.apk
 app-release.apk
 app-release.apk
+!public/usenudua.apk
