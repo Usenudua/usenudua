@@ -33,4 +33,5 @@ usenudua.apk
 
 # open-next
 .open-next/
-.wrangler/
+.wrangler/*.log
+dev-server.*.log
