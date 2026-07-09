@@ -2,11 +2,11 @@
 
 // Obfuscated traditional day names to protect intellectual property
 const _0x1a2b = {
-    ib: ["T2Jv", "RWRlbW9ibw==", "Rmlv8WFlZGFu", "QWRlcmV0YWhh", "RXRhaGE=", "RWRlbWV0YWhh", "Rmlv8W50b2s=", "QWRlcmVvYm8="],
+    ib: ["T2Jv", "RWRlbW9ibw==", "Rmlv8WFlZGFu", "QWRlcmV0YWhh", "RXRhaGE=", "RWRlbWV0YWhh", "Rmlv8WV0b2s=", "QWRlcmVvYm8="],
     ef: ["RWtwcmkgSWJpYmlv", "QWt3YSBJa3dv", "QWt3YSBPZmlv8W4=", "QWt3YSBFZGVyaQ==", "QWt3YSBJa2JpYmlv", "RWtwcmkgSWt3bw==", "RWtwcmkgT2Zpb8W4", "RWtwcmkgRWRlcmk="],
     an: ["T2Jv", "VXJ1YWJvbQ==", "T2ZmaW/Fbg==", "QWRldA==", "QWRpdGFoYQ==", "QXRpbQ==", "QWtlbnlv8W4=", "VXJ1YS1FdHRl"],
     or: ["T2JyaWJv8W4=", "VXdl", "VWR1ZGE=", "T2RpZWJv", "Tndpa3Bp", "VWJ1Ym8=", "VXJ1ZXNh8W4=", "T2RpZXRv"],
-    ub: ["T2Jv", "VWR1YW0=", "Rmlv8WFlZGFu", "QWRlcmV0YWhh", "QXRhZXRhaGE=", "VWR1YSBVa2F0", "Rmlv8W50b2s=", "QWRlcmVvYm8="]
+    ub: ["T2Jv", "VWR1YW0=", "Rmlv8WFlZGFu", "QWRlcmV0YWhh", "QXRhZXRhaGE=", "VWR1YSBVa2F0", "Rmlv8WV0b2s=", "QWRlcmVvYm8="]
 }
 
 const _0x3c4d = (s: string) => {
