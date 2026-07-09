@@ -27,7 +27,6 @@ yarn-error.log*
 next-env.d.ts
 
 # binaries
-*.apk
 app-release.apk
 usenudua.apk
 
@@ -37,4 +36,5 @@ usenudua.apk
 dev-server.*.log
 tests/
 tests/
+app-release.apk
 app-release.apk
