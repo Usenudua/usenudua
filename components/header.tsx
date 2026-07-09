@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import { getLatestRelease } from "@/app/actions/release"
+import { BookPreview } from "@/components/book-preview"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -101,14 +102,16 @@ export function Header() {
             <a href="#about" className="text-sm text-white transition-colors hover:text-foreground">
               About
             </a>
-            <a 
-              href="https://selar.com/8z871v2e28" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-sm text-white transition-colors hover:text-foreground"
-            >
-              Calendar Corpus
-            </a>
+            <BookPreview>
+              <a 
+                href="https://selar.com/8z871v2e28" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-sm text-white transition-colors hover:text-foreground"
+              >
+                Calendar Corpus
+              </a>
+            </BookPreview>
             <a
               href={primaryUrl}
               download
@@ -140,15 +143,17 @@ export function Header() {
               >
                 About
               </a>
-              <a
-                href="https://selar.com/8z871v2e28"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-white transition-colors hover:text-foreground"
-                onClick={handleNavClick}
-              >
-                Calendar Corpus
-              </a>
+              <BookPreview>
+                <a
+                  href="https://selar.com/8z871v2e28"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white transition-colors hover:text-foreground"
+                  onClick={handleNavClick}
+                >
+                  Calendar Corpus
+                </a>
+              </BookPreview>
               <a
                 href={primaryUrl}
                 download

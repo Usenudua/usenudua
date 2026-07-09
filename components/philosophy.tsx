@@ -1,6 +1,7 @@
 "use client"
 
 import { Separator } from "@/components/ui/separator"
+import { BookPreview } from "@/components/book-preview"
 
 export function Philosophy() {
   return (
@@ -102,18 +103,20 @@ export function Philosophy() {
             </p>
             <p className="text-muted-foreground text-sm max-w-xl mx-auto pt-4">
               For the complete cosmological and intellectual framework behind the calendar, read the companion book{" "}
-              <a
-                href="https://selar.com/8z871v2e28"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-bold underline underline-offset-2 hover:opacity-90"
-                style={{
-                  color: "#ffffff",
-                  textShadow: "0 0 8px rgba(220,38,38,1), 0 0 20px rgba(220,38,38,0.8), 0 0 40px rgba(220,38,38,0.4)"
-                }}
-              >
-                The Last Fallback by Abasiama Eduok
-              </a>.
+              <BookPreview>
+                <a
+                  href="https://selar.com/8z871v2e28"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold underline underline-offset-2 hover:opacity-90"
+                  style={{
+                    color: "#ffffff",
+                    textShadow: "0 0 8px rgba(220,38,38,1), 0 0 20px rgba(220,38,38,0.8), 0 0 40px rgba(220,38,38,0.4)"
+                  }}
+                >
+                  The Last Fallback by Abasiama Eduok
+                </a>
+              </BookPreview>.
             </p>
           </div>
         </div>

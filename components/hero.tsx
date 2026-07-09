@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ChevronDown, Download } from "lucide-react"
 import { useState, useEffect } from "react"
 import { getLatestRelease } from "@/app/actions/release"
+import { BookPreview } from "@/components/book-preview"
 
 export function Hero() {
   const [downloadUrls, setDownloadUrls] = useState<{ primary: string; mirror?: string | null }>({
@@ -125,16 +126,18 @@ export function Hero() {
             )}
           </div>
           <div className="flex flex-col items-center gap-2 w-full sm:w-auto">
-            <Button
-              size="lg"
-              variant="default"
-              className="w-full sm:w-auto"
-              asChild
-            >
-              <a href="https://selar.com/8z871v2e28" target="_blank" rel="noopener noreferrer">
-                Get the Calendar Corpus
-              </a>
-            </Button>
+            <BookPreview>
+              <Button
+                size="lg"
+                variant="default"
+                className="w-full sm:w-auto"
+                asChild
+              >
+                <a href="https://selar.com/8z871v2e28" target="_blank" rel="noopener noreferrer">
+                  Get the Calendar Corpus
+                </a>
+              </Button>
+            </BookPreview>
             <span className="text-xs text-muted-foreground">
               The full record behind the calendar
             </span>

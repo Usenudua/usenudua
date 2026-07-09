@@ -1,4 +1,7 @@
+"use client"
+
 import { CalendarDays } from "lucide-react"
+import { BookPreview } from "@/components/book-preview"
 
 export function Footer() {
   return (
@@ -13,9 +16,11 @@ export function Footer() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-            <a href="https://selar.com/8z871v2e28" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
-              Calendar Corpus
-            </a>
+            <BookPreview>
+              <a href="https://selar.com/8z871v2e28" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
+                Calendar Corpus
+              </a>
+            </BookPreview>
             <a href="/privacy-policy" className="transition-colors hover:text-foreground">
               Privacy Policy
             </a>
@@ -38,18 +43,20 @@ export function Footer() {
           </p>
           <p className="mx-auto max-w-2xl text-pretty leading-relaxed text-muted-foreground text-sm">
             Get the companion book,{" "}
-            <a
-              href="https://selar.com/8z871v2e28"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-bold underline underline-offset-2 hover:opacity-90"
-              style={{
-                color: "#ffffff",
-                textShadow: "0 0 8px rgba(220,38,38,1), 0 0 20px rgba(220,38,38,0.8), 0 0 40px rgba(220,38,38,0.4)"
-              }}
-            >
-              The Last Fallback by Abasiama Eduok on Selar
-            </a>.
+            <BookPreview>
+              <a
+                href="https://selar.com/8z871v2e28"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold underline underline-offset-2 hover:opacity-90"
+                style={{
+                  color: "#ffffff",
+                  textShadow: "0 0 8px rgba(220,38,38,1), 0 0 20px rgba(220,38,38,0.8), 0 0 40px rgba(220,38,38,0.4)"
+                }}
+              >
+                The Last Fallback by Abasiama Eduok on Selar
+              </a>
+            </BookPreview>.
           </p>
         </div>
 
