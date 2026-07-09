@@ -6,16 +6,16 @@ import { useState, useEffect } from "react"
 import { getLatestRelease } from "@/app/actions/release"
 
 export function Hero() {
-  const [isDownloading, setIsDownloading] = useState(false)
   const [downloadUrls, setDownloadUrls] = useState<{ primary: string; mirror?: string | null }>({
-    primary: "https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.3.apk"
+    primary: "https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.3.apk",
+    mirror: "/usenudua.apk"
   })
 
 
   useEffect(() => {
     async function fetchLatestUrl() {
+      // 1. Try Supabase redirect layer latest.json
       try {
-        // First try fetching latest.json from Supabase redirect layer
         const response = await fetch("https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/latest.json", {
           cache: 'no-store' // Ensure we get the latest version
         })
@@ -24,7 +24,8 @@ export function Hero() {
           const data = await response.json()
           if (data.url) {
             setDownloadUrls({
-              primary: data.url
+              primary: data.url,
+              mirror: "/usenudua.apk"
             })
             return // Successfully updated from JSON
           }
@@ -33,35 +34,49 @@ export function Hero() {
         console.warn('Failed to fetch latest.json from Supabase:', error)
       }
 
-      // Fallback: fetch from database if JSON fetch fails or returns no URL
+      // 2. Try fetching local latest.json (same origin fallback)
+      try {
+        const response = await fetch("/latest.json", {
+          cache: 'no-store'
+        })
+        if (response.ok) {
+          const data = await response.json()
+          if (data.url) {
+            setDownloadUrls({
+              primary: data.url,
+              mirror: "/usenudua.apk"
+            })
+            return
+          }
+        }
+      } catch (error) {
+        console.warn('Failed to fetch local latest.json:', error)
+      }
+
+      // 3. Fallback: fetch from database if JSON fetch fails or returns no URL
       try {
         const release = await getLatestRelease()
         if (release) {
           setDownloadUrls({
             primary: release.supabase_url,
-            mirror: release.neon_mirror_url
+            mirror: release.neon_mirror_url || "/usenudua.apk"
           })
+          return
         }
       } catch (error) {
         console.error('Failed to fetch fallback release from database:', error)
       }
+
+      // 4. Ultimate fallback: local APK file served from the same domain
+      setDownloadUrls({
+        primary: "/usenudua.apk",
+        mirror: null
+      })
     }
 
     fetchLatestUrl()
   }, [])
 
-  const handleDownload = () => {
-    setIsDownloading(true)
-    const link = document.createElement("a")
-    // Use primary (Supabase), fallback to mirror if needed, or vice-versa
-    link.href = downloadUrls.primary
-    link.download = `usenudua-${downloadUrls.primary.split('/').pop()}`
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-    // Reset after a short delay
-    setTimeout(() => setIsDownloading(false), 2000)
-  }
 
   return (
     <section
@@ -90,14 +105,24 @@ export function Hero() {
               size="lg"
               variant="outline"
               className="w-full sm:w-auto bg-transparent border-white/20 hover:bg-white/10"
-              onClick={handleDownload}
-              disabled={isDownloading}
+              asChild
             >
-              <Download className={`mr-2 h-5 w-5 ${isDownloading ? 'animate-bounce' : ''}`} />
-              {isDownloading ? 'Opening Download...' : 'Download for Android'}
+              <a href={downloadUrls.primary} download>
+                <Download className="mr-2 h-5 w-5" />
+                Download for Android
+              </a>
             </Button>
-            {/* Invisible spacer to match height of microcopy below Corpus button */}
-            <span className="text-xs invisible select-none" aria-hidden="true">placeholder</span>
+            {/* Show mirror download link if available */}
+            {downloadUrls.mirror ? (
+              <span className="text-xs text-muted-foreground">
+                Problems downloading? Try the{" "}
+                <a href={downloadUrls.mirror} download className="underline hover:text-primary transition-colors">
+                  mirror link
+                </a>
+              </span>
+            ) : (
+              <span className="text-xs invisible select-none" aria-hidden="true">placeholder</span>
+            )}
           </div>
           <div className="flex flex-col items-center gap-2 w-full sm:w-auto">
             <Button

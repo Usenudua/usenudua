@@ -8,13 +8,12 @@ import { getLatestRelease } from "@/app/actions/release"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [isDownloading, setIsDownloading] = useState(false)
-  const [primaryUrl, setPrimaryUrl] = useState("https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.2.apk")
+  const [primaryUrl, setPrimaryUrl] = useState("https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.3.apk")
 
   useEffect(() => {
     async function fetchLatestUrl() {
+      // 1. Try Supabase redirect layer latest.json
       try {
-        // First try fetching latest.json from Supabase redirect layer
         const response = await fetch("https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/latest.json", {
           cache: 'no-store'
         })
@@ -30,23 +29,40 @@ export function Header() {
         console.warn('Failed to fetch latest.json from Supabase (Header):', error)
       }
 
-      // Fallback: fetch from database
+      // 2. Try fetching local latest.json (same origin fallback)
+      try {
+        const response = await fetch("/latest.json", {
+          cache: 'no-store'
+        })
+        if (response.ok) {
+          const data = await response.json()
+          if (data.url) {
+            setPrimaryUrl(data.url)
+            return
+          }
+        }
+      } catch (error) {
+        console.warn('Failed to fetch local latest.json (Header):', error)
+      }
+
+      // 3. Fallback: fetch from database
       try {
         const release = await getLatestRelease()
-        if (release) setPrimaryUrl(release.supabase_url)
+        if (release && release.supabase_url) {
+          setPrimaryUrl(release.supabase_url)
+          return
+        }
       } catch (error) {
         console.error('Failed to fetch fallback release from database (Header):', error)
       }
+
+      // 4. Ultimate fallback: local APK file served from the same domain
+      setPrimaryUrl("/usenudua.apk")
     }
 
     fetchLatestUrl()
   }, [])
 
-  const handleDownload = () => {
-    setIsDownloading(true)
-    window.open(primaryUrl, "_blank")
-    setTimeout(() => setIsDownloading(false), 2000)
-  }
 
   const handleNavClick = () => {
     setMobileMenuOpen(false)
@@ -93,17 +109,17 @@ export function Header() {
             >
               Calendar Corpus
             </a>
-            <button 
-              onClick={handleDownload}
-              className="text-sm text-white transition-colors hover:text-foreground cursor-pointer bg-transparent border-none p-0"
-              disabled={isDownloading}
+            <a
+              href={primaryUrl}
+              download
+              className="text-sm text-white transition-colors hover:text-foreground"
             >
-              {isDownloading ? 'Opening Download...' : 'Download'}
-            </button>
+              Download
+            </a>
           </nav>
 
-          <Button onClick={handleDownload} disabled={isDownloading}>
-            {isDownloading ? 'Opening...' : 'Get Started'}
+          <Button asChild>
+            <a href={primaryUrl} download>Get Started</a>
           </Button>
         </div>
 
@@ -133,18 +149,16 @@ export function Header() {
               >
                 Calendar Corpus
               </a>
-              <button
-                onClick={() => {
-                  handleDownload()
-                  handleNavClick()
-                }}
-                className="text-sm text-white text-left transition-colors hover:text-foreground cursor-pointer bg-transparent border-none p-0"
-                disabled={isDownloading}
+              <a
+                href={primaryUrl}
+                download
+                className="text-sm text-white text-left transition-colors hover:text-foreground"
+                onClick={handleNavClick}
               >
-                {isDownloading ? 'Opening Download...' : 'Download'}
-              </button>
-              <Button onClick={handleDownload} className="w-full" disabled={isDownloading}>
-                {isDownloading ? 'Opening...' : 'Get Started'}
+                Download
+              </a>
+              <Button className="w-full" asChild>
+                <a href={primaryUrl} download onClick={handleNavClick}>Get Started</a>
               </Button>
             </nav>
           </div>
