@@ -7,8 +7,8 @@ export function Footer() {
   return (
     <footer className="border-t border-border py-12">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="flex items-center gap-2">
+        <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
+          <div className="flex items-center justify-center gap-2 md:justify-start">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
               <CalendarDays className="h-5 w-5 text-primary-foreground" />
             </div>
@@ -34,6 +34,8 @@ export function Footer() {
               boifiok@usenudua.com.ng
             </a>
           </div>
+
+          <div className="hidden md:block" />
         </div>
 
         <div id="about" className="mt-12 text-center">
