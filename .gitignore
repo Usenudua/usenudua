@@ -35,3 +35,5 @@ usenudua.apk
 .open-next/
 .wrangler/*.log
 dev-server.*.log
+tests/
+tests/
