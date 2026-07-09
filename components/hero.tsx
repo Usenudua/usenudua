@@ -7,9 +7,8 @@ import { getLatestRelease } from "@/app/actions/release"
 import { BookPreview } from "@/components/book-preview"
 
 export function Hero() {
-  const [downloadUrls, setDownloadUrls] = useState<{ primary: string; mirror?: string | null }>({
-    primary: "https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.3.apk",
-    mirror: "/usenudua.apk"
+  const [downloadUrls, setDownloadUrls] = useState<{ primary: string }>({
+    primary: "https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.3.apk"
   })
 
 
@@ -26,7 +25,6 @@ export function Hero() {
           if (data.url) {
             setDownloadUrls({
               primary: data.url,
-              mirror: "/usenudua.apk"
             })
             return // Successfully updated from JSON
           }
@@ -45,7 +43,6 @@ export function Hero() {
           if (data.url) {
             setDownloadUrls({
               primary: data.url,
-              mirror: "/usenudua.apk"
             })
             return
           }
@@ -60,7 +57,6 @@ export function Hero() {
         if (release) {
           setDownloadUrls({
             primary: release.supabase_url,
-            mirror: release.neon_mirror_url || "/usenudua.apk"
           })
           return
         }
@@ -71,7 +67,6 @@ export function Hero() {
       // 4. Ultimate fallback: local APK file served from the same domain
       setDownloadUrls({
         primary: "/usenudua.apk",
-        mirror: null
       })
     }
 
@@ -113,17 +108,6 @@ export function Hero() {
                 Download for Android
               </a>
             </Button>
-            {/* Show mirror download link if available */}
-            {downloadUrls.mirror ? (
-              <span className="text-xs text-muted-foreground">
-                Problems downloading? Try the{" "}
-                <a href={downloadUrls.mirror} download className="underline hover:text-primary transition-colors">
-                  mirror link
-                </a>
-              </span>
-            ) : (
-              <span className="text-xs invisible select-none" aria-hidden="true">placeholder</span>
-            )}
           </div>
           <div className="flex flex-col items-center gap-2 w-full sm:w-auto">
             <BookPreview>
