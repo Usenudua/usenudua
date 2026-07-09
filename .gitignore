@@ -37,3 +37,4 @@ usenudua.apk
 dev-server.*.log
 tests/
 tests/
+app-release.apk
