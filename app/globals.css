@@ -124,17 +124,13 @@
   html {
     height: 100%;
     width: 100%;
+    overflow-x: hidden;
     background-color: #050505;
-    background-image: url('/images/usenudua.webp');
-    background-size: cover;
-    background-position: center 35%;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
   }
 
   body {
-    @apply text-foreground min-h-screen relative;
-    background-color: transparent !important;
+    @apply text-foreground min-h-screen relative isolate;
+    background-color: #050505;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.4);
   }
 

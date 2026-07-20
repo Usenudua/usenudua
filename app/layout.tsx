@@ -93,7 +93,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        <div
+          aria-hidden="true"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: -1,
+            backgroundColor: "#050505",
+            backgroundImage: "url('/images/new-background.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center", // Centered so both the mask and tree are visible
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+        {children}
+      </body>
     </html>
   )
 }

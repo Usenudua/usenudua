@@ -99,6 +99,7 @@ export function Philosophy() {
               <span className="text-primary">Idoho mbakara ekikpeb nnyin ndioñọ idem.</span>
             </p>
             <p className="text-2xl md:text-3xl font-bold text-white tracking-widest uppercase">
+              Abre timm.<br />
               Yák isoñ adodukana.
             </p>
             <p className="text-muted-foreground text-sm max-w-xl mx-auto pt-4">
