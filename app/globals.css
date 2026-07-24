@@ -227,3 +227,35 @@
   display: block;
   margin-top: 8px;
 }
+
+.hero-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: #050505;
+  background-image: url('/images/new-background.jpg');
+  background-size: cover;
+  background-position: center 35%;
+  background-repeat: no-repeat;
+}
+
+/* Narrow/tall viewports (phones in portrait): zoom in a bit so the
+   centered subject fills more of the frame instead of losing width */
+@media (max-aspect-ratio: 3/4) {
+  .hero-bg {
+    background-size: 160%;
+    background-position: center 20%;
+  }
+}
+
+/* Very wide viewports (ultrawide desktop): pull back slightly so we
+   don't crop the subject's sides too aggressively */
+@media (min-aspect-ratio: 2/1) {
+  .hero-bg {
+    background-size: cover;
+    background-position: center 30%;
+  }
+}
