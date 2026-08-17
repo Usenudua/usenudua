@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/.well-known/*",
+    "/_next/*",
+    "/icon.png",
+    "/icon.svg",
+    "/apple-icon.png",
+    "/manifest.json",
+    "/placeholder-logo.png",
+    "/placeholder-logo.svg",
+    "/placeholder-user.jpg",
+    "/placeholder.jpg",
+    "/placeholder.svg",
+    "/usenudua.apk",
+    "/latest.json"
+  ]
+}
