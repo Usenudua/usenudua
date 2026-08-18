@@ -6,6 +6,7 @@
     "exclude": [
         "/_next/static/*",
         "/images/*",
+        "/.well-known/*",
         "/icon.svg",
         "/apple-icon.png",
         "/favicon.ico",
