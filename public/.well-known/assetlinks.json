@@ -3,7 +3,7 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.eduokabas.usenudua",
+      "package_name": "com.abaseduok.usenudua",
       "sha256_cert_fingerprints": [
         "22:00:C9:D4:99:52:3C:0A:D9:71:C8:B2:66:94:BE:B4:79:93:6C:57:C3:31:5E:4E:2E:B7:68:6E:24:BA:9F:7C",
         "A5:33:66:AD:BC:41:B8:C8:3A:F3:E6:41:BD:C3:73:E1:84:3F:99:BD:40:42:6B:39:CD:9F:4B:A4:6D:8C:8C:3F"
