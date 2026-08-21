@@ -1,0 +1,187 @@
+/* ==========================================================================
+   Usenudua entry portal -- styles for components/UsenuduaHome.tsx
+   ========================================================================== */
+
+.usenudua-hero {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #08090c;
+}
+
+.usenudua-backdrop {
+  position: absolute !important;
+  inset: 0;
+  z-index: 0;
+  object-fit: cover !important;
+  filter: blur(48px) saturate(1.15) brightness(0.55);
+  transform: scale(1.15);
+}
+
+/* Edge-to-edge frame: previously this box was locked to the source
+   image's own aspect ratio (aspect-ratio + max-width/max-height), so
+   object-fit: contain could show the *whole* image without cropping
+   -- at the cost of black letterbox bars whenever the viewport's
+   aspect ratio didn't match the image's. To fill the screen edge to
+   edge on any viewport, the frame now simply IS the viewport (100% of
+   the fixed, inset:0 .usenudua-hero), and .usenudua-scene-image uses
+   object-fit: cover to fill it, cropping whichever axis overflows.
+
+   That crop is exactly why marker/mask position is no longer set here
+   as fixed left/top percentages: a percentage of the frame's width/
+   height now means a percentage of the CROPPED, viewport-shaped
+   frame, not a percentage of the original image -- and how much gets
+   cropped, and from where, changes continuously with viewport size.
+   UsenuduaHome.tsx computes each marker's and the mask's position at
+   render time (and on resize) from the image's natural pixel
+   dimensions and the frame's current rendered size, then applies it
+   as an inline style. That's the only way a point tied to specific
+   image content (a face, a tick mark) can stay pinned to that content
+   once the image is being cropped rather than letterboxed. */
+.usenudua-scene-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.usenudua-scene-image {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center;
+}
+
+.usenudua-dial-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.usenudua-dial {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Position (left/top) and box size are set inline per-marker from JS
+   (see MARKER_POSITIONS / projectPoint in UsenuduaHome.tsx) so they
+   can track the cover-fit crop. Everything else -- look, animation,
+   transitions -- stays here.
+
+   data-pos 0 and 5 sit directly on the mountain/wave icon artwork by
+   design (see UsenuduaHome.tsx), which previously made the glyph hard
+   to read against the icon underneath it -- white mountain peaks or
+   wave linework showing through gold text is low-contrast either way.
+   Rather than move the marker, it gets three layers of legibility
+   here: a soft dark backing chip (radial-gradient, fades at the edge
+   so it doesn't read as a hard badge), a black outline built from
+   stacked text-shadows (holds up against both the icons' light art
+   and the tick band's mixed red/white/gold texture), and a thin gold
+   glow tying it back to the marker's own color. This applies to every
+   marker, not just 0/5, so all ten look consistent regardless of what
+   they're sitting on. */
+.usenudua-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 600;
+  color: #ffffff;
+  pointer-events: none;
+  user-select: none;
+  background: radial-gradient(
+    circle,
+    rgba(6, 7, 10, 0.78) 0%,
+    rgba(6, 7, 10, 0.62) 28%,
+    rgba(6, 7, 10, 0.25) 46%,
+    rgba(6, 7, 10, 0) 65%
+  );
+  text-shadow:
+    0 0 2px #000,
+    0 0 3px #000,
+    0 1px 3px #000,
+    0 -1px 3px #000,
+    0 0 8px rgba(232, 199, 102, 0.5);
+  transition: opacity 0.35s ease, transform 0.35s ease, left 0.15s ease, top 0.15s ease;
+}
+
+.usenudua-marker {
+  animation: usenudua-marker-in 0.4s ease both;
+}
+@keyframes usenudua-marker-in {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Clickable mask -- left/top/width also set inline from JS for the
+   same cover-fit-tracking reason as the markers above. */
+.usenudua-mask {
+  position: absolute;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, left 0.15s ease, top 0.15s ease, width 0.15s ease;
+}
+.usenudua-mask:hover,
+.usenudua-mask:focus-visible {
+  box-shadow:
+    0 0 22px 6px rgba(30, 111, 184, 0.55),
+    0 0 55px 16px rgba(10, 60, 120, 0.45),
+    0 0 90px 28px rgba(70, 140, 220, 0.22);
+  transform: translate(-50%, -50%) scale(1.04);
+}
+.usenudua-mask:focus-visible {
+  outline: 2px solid #e8c766;
+  outline-offset: 6px;
+}
+.usenudua-mask:active {
+  transform: translate(-50%, -50%) scale(0.97);
+}
+
+.usenudua-mask::after {
+  content: "";
+  position: absolute;
+  inset: -6%;
+  border-radius: 50%;
+  box-shadow:
+    0 0 18px 4px rgba(30, 111, 184, 0.35),
+    0 0 38px 10px rgba(10, 60, 120, 0.25);
+  animation: usenudua-breathe 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes usenudua-breathe {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+.usenudua-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 28%, #4a9bd8 0%, #1e6fb8 15%, #08090c 70%);
+  opacity: 0;
+  transform: scale(0.3);
+  transition: opacity 0.7s ease, transform 0.76s cubic-bezier(0.6, 0, 0.4, 1);
+}
+.usenudua-transition.is-active {
+  opacity: 1;
+  transform: scale(3.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .usenudua-marker { animation: none; }
+  .usenudua-mask::after { animation: none; }
+  .usenudua-transition { transition-duration: 0.3s; }
+}

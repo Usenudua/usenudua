@@ -26,16 +26,29 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# binaries
+# binaries / large assets not needed in repo
 app-release.apk
+usenudua.apk
+*.zip
+*.apk
 
 # open-next
 .open-next/
 .wrangler/*.log
 dev-server.*.log
-tests/
-tests/
-app-release.apk
-app-release.apk
-app-release.apk
+
+# scratch / temporary files
+"New Text Document.txt"
+New\ Text\ Document.txt
+EntryPortal.optimized.tsx
+README-portal-optimization.txt
+portal-square.png
+portal-wide.png
+ChatGPT\ Image*.png
+ChatGPT Image*.png
+
+# loose root-level duplicates (files that belong inside app/ only)
+/layout.tsx
+/styles.css
+
 !public/usenudua.apk

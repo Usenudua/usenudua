@@ -94,7 +94,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <div aria-hidden="true" className="hero-bg" />
         {children}
       </body>
     </html>
