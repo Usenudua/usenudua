@@ -24,14 +24,17 @@ async function verifyToken(token: string) {
       return { success: true as const }
     }
 
-    // Treat "already used" as a soft-success case, since a race between
-    // Android App Link interception and the browser can cause the token
-    // to be consumed twice for a single legitimate sign-in attempt.
-    if (res.status === 409 || res.status === 410) {
-      return { success: true as const, alreadyUsed: true }
+    // Surface the backend's error message (expired, invalid, rate-limited, etc.)
+    // so the UI can show a specific reason rather than a generic failure.
+    let reason: string | undefined
+    try {
+      const body = await res.json() as { error?: string; message?: string }
+      reason = body.error ?? body.message
+    } catch {
+      // non-JSON body — leave reason undefined
     }
 
-    return { success: false as const }
+    return { success: false as const, reason }
   } catch {
     return { success: false as const }
   }
@@ -63,11 +66,7 @@ export default async function VerifyPage({
       <StatusScreen
         icon={<CheckCircle2 className="h-12 w-12 text-primary" />}
         title="You're Verified!"
-        message={
-          result.alreadyUsed
-            ? "This link was already used to sign in — you should already be logged in on your device."
-            : "Your sign-in has been confirmed. Return to the Usenudua app to continue."
-        }
+        message="Your sign-in has been confirmed. Return to the Usenudua app to continue."
         token={token}
         showAppCta
       />
@@ -78,7 +77,10 @@ export default async function VerifyPage({
     <StatusScreen
       icon={<XCircle className="h-12 w-12 text-destructive" />}
       title="Verification Failed"
-      message="This link may have expired or already been used. Please request a new magic link from the app."
+      message={
+        result.reason
+          ?? "This link may have expired or already been used. Please request a new magic link from the app."
+      }
       token={token}
       showAppCta
     />
