@@ -8,7 +8,7 @@ if (!urlArg) {
 
 const targetUrl = new URL(urlArg);
 
-async function checkEndpoint(path, expectOpenNext) {
+async function checkEndpoint(path, expectOpenNext, expectedCacheControl) {
   const fullUrl = new URL(path, targetUrl).toString();
   console.log(`Testing ${fullUrl} ...`);
   const res = await fetch(fullUrl, {
@@ -22,6 +22,14 @@ async function checkEndpoint(path, expectOpenNext) {
     assert.ok(hasOpenNext, `Expected x-opennext header to be present on ${path}`);
   } else {
     assert.ok(!hasOpenNext, `Expected x-opennext header to be ABSENT on ${path} (Worker bypass failed)`);
+  }
+  
+  if (expectedCacheControl) {
+    const cc = res.headers.get("cache-control");
+    assert.ok(
+      cc && cc.includes(expectedCacheControl),
+      `Expected Cache-Control to include '${expectedCacheControl}' on ${path}, got '${cc}'`
+    );
   }
 }
 
@@ -39,8 +47,8 @@ async function checkMetadata() {
 
 async function run() {
   try {
-    // 1. Nested static artwork (should bypass Worker)
-    await checkEndpoint("/usenudua/compass-landscape-base.png", false);
+    // 1. Nested static artwork (should bypass Worker + have caching)
+    await checkEndpoint("/usenudua/compass-landscape-base.png", false, "max-age=604800");
     
     // 2. Root static asset (should bypass Worker)
     await checkEndpoint("/icon.png", false);
