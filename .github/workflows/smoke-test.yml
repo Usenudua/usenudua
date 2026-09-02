@@ -1,14 +1,19 @@
-﻿name: Post-Deploy Smoke Test
+name: Post-Deploy Smoke Test
 
 on:
   deployment_status:
 
 jobs:
   smoke-test:
-    # Only run when Cloudflare Pages reports a successful deployment
+    # Only run when Cloudflare Pages reports a successful deployment for this project.
+    # Matches both preview URLs (*.usenudua.pages.dev) and the production domain (usenudua.com.ng).
+    # Avoids false-firing against other Cloudflare projects that may share 'usenudua' in their name.
     if: |
       github.event.deployment_status.state == 'success' &&
-      contains(github.event.deployment_status.environment_url, 'usenudua')
+      (
+        contains(github.event.deployment_status.environment_url, '.usenudua.pages.dev') ||
+        contains(github.event.deployment_status.environment_url, 'usenudua.com.ng')
+      )
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
