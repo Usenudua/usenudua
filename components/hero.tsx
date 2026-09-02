@@ -3,71 +3,29 @@
 import { Button } from "@/components/ui/button"
 import { ChevronDown, Download } from "lucide-react"
 import { useState, useEffect } from "react"
-import { getLatestRelease } from "@/app/actions/release"
 import { BookPreview } from "@/components/book-preview"
 
 export function Hero() {
-  const [downloadUrls, setDownloadUrls] = useState<{ primary: string }>({
-    primary: "https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/usenudua-v2.0.3.apk"
-  })
-
+  const [primaryUrl, setPrimaryUrl] = useState<string | null>(null)
 
   useEffect(() => {
     async function fetchLatestUrl() {
-      // 1. Try Supabase redirect layer latest.json
       try {
-        const response = await fetch("https://mniixeqjrmiiwdjkwucd.supabase.co/storage/v1/object/public/downloads/latest.json", {
-          cache: 'no-store' // Ensure we get the latest version
-        })
-        
-        if (response.ok) {
-          const data = await response.json()
-          if (data.url) {
-            setDownloadUrls({
-              primary: data.url,
-            })
-            return // Successfully updated from JSON
-          }
-        }
-      } catch (error) {
-        console.warn('Failed to fetch latest.json from Supabase:', error)
-      }
-
-      // 2. Try fetching local latest.json (same origin fallback)
-      try {
-        const response = await fetch("/latest.json", {
-          cache: 'no-store'
+        const response = await fetch("https://api.usenudua.com.ng/api/downloads/latest-apk", {
+          cache: "no-store",
         })
         if (response.ok) {
           const data = await response.json()
           if (data.url) {
-            setDownloadUrls({
-              primary: data.url,
-            })
+            setPrimaryUrl(data.url)
             return
           }
         }
       } catch (error) {
-        console.warn('Failed to fetch local latest.json:', error)
+        console.warn("Failed to fetch latest APK URL (Hero):", error)
       }
-
-      // 3. Fallback: fetch from database if JSON fetch fails or returns no URL
-      try {
-        const release = await getLatestRelease()
-        if (release) {
-          setDownloadUrls({
-            primary: release.supabase_url,
-          })
-          return
-        }
-      } catch (error) {
-        console.error('Failed to fetch fallback release from database:', error)
-      }
-
-      // 4. Ultimate fallback: local APK file served from the same domain
-      setDownloadUrls({
-        primary: "/usenudua.apk",
-      })
+      // Leave primaryUrl as null — UI shows an honest "unavailable" state
+      // rather than falling back to a stale local APK.
     }
 
     fetchLatestUrl()
@@ -100,13 +58,21 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="w-full sm:w-auto bg-transparent border-white/20 hover:bg-white/10"
+              className="w-full sm:w-auto bg-transparent border-white/20 hover:bg-white/10 disabled:opacity-50"
               asChild
+              disabled={!primaryUrl}
             >
-              <a href={downloadUrls.primary} download>
-                <Download className="mr-2 h-5 w-5" />
-                Download for Android
-              </a>
+              {primaryUrl ? (
+                <a href={primaryUrl} download>
+                  <Download className="mr-2 h-5 w-5" />
+                  Download for Android
+                </a>
+              ) : (
+                <span aria-disabled="true" className="pointer-events-none">
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Unavailable
+                </span>
+              )}
             </Button>
           </div>
           <div className="flex flex-col items-center gap-2 w-full sm:w-auto">
