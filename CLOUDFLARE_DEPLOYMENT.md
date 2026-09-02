@@ -38,3 +38,14 @@ In the Cloudflare Pages dashboard for your project:
 - **Local Build on Windows**: `npm run pages:build` may fail locally on Windows due to limitations in the Cloudflare adapter. This is normal and won't affect the build on Cloudflare's own servers.
 - **Node version**: Ensure Cloudflare is using Node.js 18 or newer.
 - **Dependency Conflict**: If you see an `ERESOLVE` error, make sure the `.npmrc` file is uploaded. It contains `legacy-peer-deps=true` which fixes the conflict between Next.js 16 and the Cloudflare adapter.
+
+## Deployment Environments
+
+- **Project name in Cloudflare**: `usenudua` (not `usenudua-website` — that's a stale, unrelated project pointing at a different `.pages.dev` domain; ignore it)
+- **Production branch**: `main`
+- **Production domains**: `usenudua.com.ng`, `www.usenudua.com.ng`, `usenudua.pages.dev`
+- Pushes to any other branch build as **Preview** deployments only (`<hash>.usenudua.pages.dev`) — they do not touch the custom domain until merged to `main`.
+
+## Recent Changes
+
+- **2026-09-02**: Fixed `/verify/purchase` 404 in production — the page existed in the repo but had been pushed only to a feature branch and preview deployment, never merged to `main`. Route now resolves correctly (`200 OK`) on `usenudua.com.ng`.

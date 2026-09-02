@@ -1,3 +1,5 @@
+> ⚠️ **SUPERSEDED — DO NOT FOLLOW.** This document describes the earlier static-export + BigStorage deployment model. The site now runs as dynamic SSR via OpenNext on Cloudflare Pages, with automatic deployment on push to `main`. See `CLOUDFLARE_DEPLOYMENT.md` for the current process.
+
 # 🚀 Production Readiness Checklist
 
 ## ✅ COMPLETED
