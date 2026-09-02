@@ -92,3 +92,9 @@ export default function Page() {
 The supplied artwork is retained as the scene layer because reproducing the mountain, ocean, lighting, carved objects, mask artwork, and fine ornamental geometry procedurally in CSS/SVG would reduce fidelity.
 
 The parts that must be dynamic — the ten numbers/vowels — are explicitly removed from the application's dependency on the image and rendered as independent code.
+
+## Deployment
+
+This repo deploys to Cloudflare Pages as dynamic SSR via OpenNext, with automatic deployment on push to `main`. See [`CLOUDFLARE_DEPLOYMENT.md`](./CLOUDFLARE_DEPLOYMENT.md) for the full process, domains, and troubleshooting.
+
+`DEPLOYMENT.md`, `IMPLEMENTATION_SUMMARY.md`, and `PRODUCTION_CHECKLIST.md` describe an earlier static-export deployment model and are superseded — do not follow them.
