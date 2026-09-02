@@ -5,7 +5,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "eslint .",
+    "lint": "next lint",
     "start": "next start",
     "pages:build": "OPEN_NEXT_DEBUG=true npx @opennextjs/cloudflare build --dangerouslyUseUnsupportedNextVersion && cp .open-next/worker.js .open-next/assets/_worker.js && cp -r .open-next/.build .open-next/cloudflare .open-next/middleware .open-next/server-functions .open-next/assets/ && cp _routes.json .open-next/assets/",
     "pages:preview": "npx wrangler pages dev .open-next/cloudflare"

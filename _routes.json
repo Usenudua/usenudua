@@ -1,20 +1,24 @@
 {
-    "version": 1,
-    "include": [
-        "/*"
-    ],
-    "exclude": [
-        "/_next/static/*",
-        "/images/*",
-        "/.well-known/*",
-        "/icon.svg",
-        "/apple-icon.png",
-        "/favicon.ico",
-        "/manifest.json",
-        "/*.png",
-        "/*.jpg",
-        "/*.jpeg",
-        "/*.svg",
-        "/*.apk"
-    ]
+  "version": 1,
+  "include": [
+    "/*"
+  ],
+  "exclude": [
+    "/_next/static/*",
+    "/images/*",
+    "/usenudua/*",
+    "/.well-known/*",
+    "/icon.png",
+    "/icon.svg",
+    "/apple-icon.png",
+    "/favicon.ico",
+    "/manifest.json",
+    "/usenudua.apk",
+    "/latest.json",
+    "/placeholder-logo.png",
+    "/placeholder-logo.svg",
+    "/placeholder-user.jpg",
+    "/placeholder.jpg",
+    "/placeholder.svg"
+  ]
 }

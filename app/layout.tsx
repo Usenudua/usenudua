@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_NG',
     url: 'https://usenudua.com.ng',
-    title: 'Usendua - Cultural Calendar App',
+    title: 'Usenudua - Cultural Calendar App',
     description: 'Experience time through traditional Ibibio, Annañ, Oro, Efik cultures. Discover day names, market days, and commemorate life events.',
-    siteName: 'Usendua',
+    siteName: 'Usenudua',
     images: [
       {
         url: '/images/logo.png',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Usendua - Cultural Calendar App',
+    title: 'Usenudua - Cultural Calendar App',
     description: 'Experience time through traditional Ibibio, Annañ, Oro, Efik cultures',
     images: ['/images/logo.png'],
   },
@@ -76,7 +76,6 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
-  generator: 'v0.app',
   applicationName: 'Usenudua',
   appleWebApp: {
     capable: true,
