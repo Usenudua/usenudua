@@ -80,6 +80,10 @@ async function run() {
     // 6. Android App Links (guarantees commit 4164cfa regression cannot recur)
     await checkEndpoint("/.well-known/assetlinks.json", false);
     
+    // 5. /_next/static/* (should bypass Worker + 1-year immutable browser cache)
+    // Uses a real hashed font file — hashed filenames make immutable safe here
+    await checkEndpoint("/_next/static/media/e4af272ccee01ff0-s.p.woff2", false, "immutable");
+    
     console.log("\n✅ All smoke tests passed!");
   } catch (err) {
     console.error("\n❌ Smoke test failed:");
