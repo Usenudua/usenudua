@@ -1,5 +1,4 @@
 name: Post-Deploy Smoke Test
-
 on:
   push:
     branches:
@@ -7,19 +6,16 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
   smoke-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
       - name: Determine target URL
         id: target
         env:
@@ -28,14 +24,13 @@ jobs:
           if [ "${{ github.event_name }}" = "push" ]; then
             echo "url=https://usenudua.com.ng" >> "$GITHUB_OUTPUT"
           else
-            PR_NUMBER="${{ github.event.pull_request.number }}"
             MAX_ATTEMPTS=10
             DELAY=20
             for i in $(seq 1 $MAX_ATTEMPTS); do
               echo "Looking for Cloudflare preview URL, attempt $i..."
-              COMMENT_BODY=$(gh api "repos/${{ github.repository }}/issues/$PR_NUMBER/comments" \
-                --jq '[.[] | select(.user.login == "cloudflare-workers-and-pages[bot]") | select(.body | test("^## Deploying usenudua with"))] | last | .body // ""')
-              PREVIEW_URL=$(echo "$COMMENT_BODY" | perl -0777 -ne "print \$1 if /Branch Preview URL.*?href='([^']+)'/s")
+              SUMMARY=$(gh api "repos/${{ github.repository }}/commits/${{ github.event.pull_request.head.sha }}/check-runs" \
+                --jq '.check_runs[] | select(.name == "Cloudflare Pages") | select(.status == "completed") | .output.summary // ""')
+              PREVIEW_URL=$(echo "$SUMMARY" | perl -0777 -ne "print \$1 if /Branch Preview URL.*?href='([^']+)'/s")
               if [ -n "$PREVIEW_URL" ]; then
                 echo "Found: $PREVIEW_URL"
                 echo "url=$PREVIEW_URL" >> "$GITHUB_OUTPUT"
@@ -49,7 +44,6 @@ jobs:
       - name: Wait for Cloudflare build (push only)
         if: github.event_name == 'push'
         run: sleep 60
-
       - name: Run smoke test (with retries)
         run: |
           MAX_ATTEMPTS=6

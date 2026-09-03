@@ -51,8 +51,6 @@ ChatGPT Image*.png
 /layout.tsx
 /styles.css
 
-!public/usenudua.apk
-
 # Stray package-manager artifacts (npm is canonical — see .npmrc)
 pnpm-lock.yaml
 pnpm-workspace.yaml
