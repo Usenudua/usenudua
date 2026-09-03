@@ -43,6 +43,7 @@ async function checkMetadata() {
   assert.equal(res.status, 200, "Expected 200 OK for homepage");
   const html = await res.text();
   assert.ok(html.includes("Usenudua - Cultural Calendar App"), "Expected corrected branding in HTML");
+  return html; // return for reuse
 }
 
 async function run() {
@@ -53,15 +54,28 @@ async function run() {
     // 2. Root static asset (should bypass Worker)
     await checkEndpoint("/icon.png", false);
     
-    // 3. Dynamic SSR control (MUST invoke Worker)
+    // 3. Dynamic SSR control (MUST invoke Worker; _headers must NOT affect it)
     await checkEndpoint("/verify", true);
+    // Also assert _headers didn't leak caching onto this SSR route
+    const verifyRes = await fetch(new URL("/verify", targetUrl).toString(), {
+      headers: { "User-Agent": "Mozilla/5.0 (Smoke Test)" }
+    });
+    const verifyCC = verifyRes.headers.get("cache-control") ?? "";
+    assert.ok(
+      !verifyCC.includes("max-age=604800") && !verifyCC.includes("immutable"),
+      `Expected /verify Cache-Control to be uncacheable, got '${verifyCC}'`
+    );
     
-    // 4. Branding metadata check
-    await checkMetadata();
+    // 4. Branding metadata check — also returns HTML for reuse in test 5
+    const homepageHtml = await checkMetadata();
     
     // 5. /_next/static/* (should bypass Worker + 1-year immutable browser cache)
-    // Uses a real hashed font file — hashed filenames make immutable safe here
-    await checkEndpoint("/_next/static/media/e4af272ccee01ff0-s.p.woff2", false, "immutable");
+    // Path is discovered at runtime from homepage HTML — avoids hardcoding build-specific hashes
+    // that break on the next deploy when Next.js regenerates chunk filenames.
+    const chunkMatch = homepageHtml.match(/\/_next\/static\/chunks\/[a-f0-9]+-[a-f0-9]+\.js/);
+    assert.ok(chunkMatch, "Could not find a /_next/static/chunks/ path in homepage HTML to test");
+    console.log(`  (discovered chunk: ${chunkMatch[0]})`);
+    await checkEndpoint(chunkMatch[0], false, "immutable");
     
     console.log("\n✅ All smoke tests passed!");
   } catch (err) {
