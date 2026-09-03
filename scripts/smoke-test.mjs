@@ -77,6 +77,9 @@ async function run() {
     console.log(`  (discovered chunk: ${chunkMatch[0]})`);
     await checkEndpoint(chunkMatch[0], false, "immutable");
     
+    // 6. Android App Links (guarantees commit 4164cfa regression cannot recur)
+    await checkEndpoint("/.well-known/assetlinks.json", false);
+    
     console.log("\n✅ All smoke tests passed!");
   } catch (err) {
     console.error("\n❌ Smoke test failed:");
