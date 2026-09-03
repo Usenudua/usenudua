@@ -47,7 +47,7 @@ async function checkMetadata() {
 
 async function run() {
   try {
-    // 1. Nested static artwork (should bypass Worker + have caching)
+    // 1. Nested static artwork (should bypass Worker + 7-day browser cache)
     await checkEndpoint("/usenudua/compass-landscape-base.png", false, "max-age=604800");
     
     // 2. Root static asset (should bypass Worker)
@@ -58,6 +58,10 @@ async function run() {
     
     // 4. Branding metadata check
     await checkMetadata();
+    
+    // 5. /_next/static/* (should bypass Worker + 1-year immutable browser cache)
+    // Uses a real hashed font file — hashed filenames make immutable safe here
+    await checkEndpoint("/_next/static/media/e4af272ccee01ff0-s.p.woff2", false, "immutable");
     
     console.log("\n✅ All smoke tests passed!");
   } catch (err) {
