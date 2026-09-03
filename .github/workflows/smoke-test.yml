@@ -34,9 +34,8 @@ jobs:
             for i in $(seq 1 $MAX_ATTEMPTS); do
               echo "Looking for Cloudflare preview URL, attempt $i..."
               COMMENT_BODY=$(gh api "repos/${{ github.repository }}/issues/$PR_NUMBER/comments" \
-                --jq '[.[] | select(.user.login == "cloudflare-workers-and-pages")] | last | .body // ""')
-              PREVIEW_URL=$(echo "$COMMENT_BODY" | grep -oP '(?<=Branch Preview URL:\*\* )https://\S+' || \
-                             echo "$COMMENT_BODY" | grep -oP 'https://[a-zA-Z0-9.-]+\.usenudua\.pages\.dev' | tail -1)
+                --jq '[.[] | select(.user.login == "cloudflare-workers-and-pages[bot]") | select(.body | test("^## Deploying usenudua with"))] | last | .body // ""')
+              PREVIEW_URL=$(echo "$COMMENT_BODY" | perl -0777 -ne "print \$1 if /Branch Preview URL.*?href='([^']+)'/s")
               if [ -n "$PREVIEW_URL" ]; then
                 echo "Found: $PREVIEW_URL"
                 echo "url=$PREVIEW_URL" >> "$GITHUB_OUTPUT"
@@ -47,7 +46,6 @@ jobs:
             echo "Could not find Cloudflare preview URL after $MAX_ATTEMPTS attempts"
             exit 1
           fi
-
       - name: Wait for Cloudflare build (push only)
         if: github.event_name == 'push'
         run: sleep 60
