@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { CheckCircle2, XCircle, Smartphone } from "lucide-react"
+import { FALLBACK_APK_URL } from "@/lib/download-constants"
 
 export const dynamic = "force-dynamic" // never cache -- tokens are single-use
 
@@ -18,12 +19,14 @@ async function getLatestApkUrl() {
     const res = await fetch("https://api.usenudua.com.ng/api/downloads/latest-apk", { cache: "no-store" })
     if (res.ok) {
       const data = await res.json()
-      return data.url as string | undefined
+      if (data.url) {
+        return data.url as string
+      }
     }
   } catch {
-    // fall through to undefined
+    // fall through to fallback
   }
-  return undefined
+  return FALLBACK_APK_URL
 }
 
 async function verifyToken(token: string) {
