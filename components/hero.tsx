@@ -4,9 +4,10 @@ import { Button } from "@/components/ui/button"
 import { ChevronDown, Download } from "lucide-react"
 import { useState, useEffect } from "react"
 import { BookPreview } from "@/components/book-preview"
+import { FALLBACK_APK_URL } from "@/lib/download-constants"
 
 export function Hero() {
-  const [primaryUrl, setPrimaryUrl] = useState<string | null>(null)
+  const [primaryUrl, setPrimaryUrl] = useState<string | null>(FALLBACK_APK_URL)
 
   useEffect(() => {
     async function fetchLatestUrl() {
@@ -24,8 +25,8 @@ export function Hero() {
       } catch (error) {
         console.warn("Failed to fetch latest APK URL (Hero):", error)
       }
-      // Leave primaryUrl as null — UI shows an honest "unavailable" state
-      // rather than falling back to a stale local APK.
+      // Fall back to verified canonical release APK if dynamic endpoint is unreachable
+      setPrimaryUrl(FALLBACK_APK_URL)
     }
 
     fetchLatestUrl()
