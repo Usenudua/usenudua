@@ -1,6 +1,5 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
 import { useState, useEffect } from "react"
@@ -95,10 +94,6 @@ export function Header() {
               {primaryUrl ? "Download" : "Unavailable"}
             </a>
           </nav>
-
-          <Button asChild>
-            <a {...downloadProps}>{primaryUrl ? "Get Started" : "Unavailable"}</a>
-          </Button>
         </div>
 
         {mobileMenuOpen && (
@@ -140,9 +135,6 @@ export function Header() {
               >
                 {primaryUrl ? "Download" : "Unavailable"}
               </a>
-              <Button className="w-full" asChild>
-                <a {...downloadProps} onClick={handleNavClick}>{primaryUrl ? "Get Started" : "Unavailable"}</a>
-              </Button>
             </nav>
           </div>
         )}
